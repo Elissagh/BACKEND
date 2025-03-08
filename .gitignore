@@ -1,0 +1,22 @@
+# 📌 Ignorer les fichiers Node.js (React.js)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+
+# 📌 Ignorer les fichiers Java (Spring Boot)
+target/
+*.log
+*.jar
+*.war
+*.class
+*.iml
+/.idea/
+/.vscode/
+/mvnw
+/.mvn/
+
+# 📌 Ignorer les fichiers système inutiles
+.DS_Store
+Thumbs.db
