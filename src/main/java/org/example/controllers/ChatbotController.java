@@ -19,9 +19,13 @@ public class ChatbotController {
     // 🔹 L'utilisateur envoie une question en JSON et reçoit une réponse en JSON
     @PostMapping
     public QuestionResponse askQuestion(@RequestBody QuestionRequest request) {
-        return questionRepository.findByQuestiontextIgnoreCase(request.getQuestion())
-                .map(q -> new QuestionResponse(q.getAnswertext()))
-                .orElseGet(() -> new QuestionResponse("Je ne connais pas encore la réponse à cette question."));
+        List<Question> questions = questionRepository.findByQuestiontextIgnoreCase(request.getQuestion());
+
+        if (!questions.isEmpty()) {
+            return new QuestionResponse(questions.get(0).getAnswertext());
+        }
+
+        return new QuestionResponse("Je ne connais pas encore la réponse à cette question.");
     }
 
     // 🔹 Ajout d'une nouvelle question avec réponse (JSON)
