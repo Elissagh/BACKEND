@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/questions/**").permitAll() // ✅ Permet l'accès sans authentification
                         .requestMatchers("/admin/**").authenticated() // 🔐 Admin protégé
+                        .requestMatchers("/chatbot").permitAll() // 👈 AJOUTE ÇA ICI
                 )
                 .httpBasic(withDefaults());
 

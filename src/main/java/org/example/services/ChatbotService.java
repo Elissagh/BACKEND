@@ -11,19 +11,9 @@ import java.util.List;
 public class ChatbotService {
 
     @Autowired
-    private QuestionRepository questionRepository;
+    private NlpClientService nlpClientService;
 
-    /**
-     * Trouve une réponse à une question posée par un client.
-     */
     public String getResponse(String questionText) {
-        List<Question> questions = questionRepository.findByQuestiontextIgnoreCase(questionText);
-
-        // Vérifier si la liste contient au moins une réponse
-        if (!questions.isEmpty()) {
-            return questions.get(0).getAnswertext();  // Prendre la première réponse
-        }
-
-        return "Désolé, je ne connais pas la réponse à cette question.";
+        return nlpClientService.getAnswerFromFlask(questionText);
     }
 }

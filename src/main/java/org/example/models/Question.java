@@ -30,6 +30,7 @@ public class Question {
 
     @Column(nullable = false)
     private LocalDateTime created_at = LocalDateTime.now();
+    private String category; // Ex: "compte", "crédit", "sécurité"
 
 
 
